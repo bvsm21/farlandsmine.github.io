@@ -11,26 +11,6 @@
   </style>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-  <script>
-    // Funções para mostrar/esconder as seções de login, sign up e user após o login
-    function showLoginSection() {
-      document.getElementById("loginSection").style.display = "block";
-      document.getElementById("signupSection").style.display = "none";
-      document.getElementById("userSection").style.display = "none";
-    }
-
-    function showSignupSection() {
-      document.getElementById("loginSection").style.display = "none";
-      document.getElementById("signupSection").style.display = "block";
-      document.getElementById("userSection").style.display = "none";
-    }
-
-    function showUserSection() {
-      document.getElementById("loginSection").style.display = "none";
-      document.getElementById("signupSection").style.display = "none";
-      document.getElementById("userSection").style.display = "block";
-    }
-  </script>
 </head>
 <body>
   <header>
@@ -109,48 +89,10 @@
         <li>Estados Unidos, Washington, D.C. (US): das 10:00 às 12:00</li>
       </ul>
     </section>
-
-    <section id="loginSection">
-      <!-- Conteúdo da seção de login -->
-      <h2>Login</h2>
-      <form id="loginForm">
-        <label for="loginEmail">Username:</label>
-        <input type="text" id="loginUsername" required>
-
-        <label for="loginPassword">Senha:</label>
-        <input type="password" id="loginPassword" required>
-
-        <button type="submit">Entrar</button>
-        <p>Não tem uma conta? <a href="#" onclick="showSignupSection()">Registar</a></p>
-      </form>
-    </section>
-
-    <section id="signupSection" class="hidden">
-      <!-- Conteúdo da seção de sign up -->
-      <h2>Registar</h2>
-      <form id="signupForm">
-        <label for="signupUsername">Username:</label>
-        <input type="text" id="signupUsername" required>
-
-        <label for="signupPassword">Senha:</label>
-        <input type="password" id="signupPassword" required>
-
-        <button type="submit">Registar</button>
-        <p>Já tem uma conta? <a href="#" onclick="showLoginSection()">Entrar</a></p>
-      </form>
-    </section>
-
-    <section id="userSection" class="hidden">
-      <!-- Conteúdo da seção do usuário após o login -->
-      <h2>Olá, [Nome do Usuário]!</h2>
-      <p>Seu email: [email do usuário]</p>
-      <p>[Outras informações do usuário]</p>
-      <button onclick="showLoginSection()">Sair</button>
-    </section>
   </main>
 
   <footer>
     <p>© 2023 FarLands2011. Todos os direitos reservados.</p>
   </footer>
 </body>
-</html> 
+</html>
