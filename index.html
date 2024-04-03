@@ -13,12 +13,6 @@
     }
   </style>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({pageLanguage: 'pt', includedLanguages: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-    }
-  </script>
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 <body>
   <header>
@@ -103,5 +97,26 @@
   <footer>
     <p>© 2023 FarLands2011. Todos os direitos reservados.</p>
   </footer>
+
+  <script>
+    // Função para carregar o botão de tradução manualmente
+    function loadTranslateButton() {
+      var googleTranslateScript = document.createElement('script');
+      googleTranslateScript.type = 'text/javascript';
+      googleTranslateScript.async = true;
+      googleTranslateScript.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(googleTranslateScript);
+    }
+
+    // Função de inicialização do Google Translate
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'pt', includedLanguages: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+    }
+
+    // Carrega o botão de tradução ao carregar a página
+    window.onload = function() {
+      loadTranslateButton();
+    };
+  </script>
 </body>
 </html>
