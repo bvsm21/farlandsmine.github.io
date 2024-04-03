@@ -1,0 +1,7 @@
+/* style.css */
+
+/* Estilos para o botão de tradução do Google Translate */
+#google_translate_element {
+  float: right;
+  margin-top: 10px;
+}
