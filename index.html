@@ -11,6 +11,9 @@
       float: right;
       margin-top: 10px;
     }
+    #language_selector {
+      margin-top: 20px;
+    }
   </style>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -19,6 +22,13 @@
     <h1 data-translate="true">Bem-vindo ao Meu Servidor de Minecraft</h1>
     <!-- Div para o botão de tradução do Google Translate -->
     <div id="google_translate_element"></div>
+    <!-- Menu suspenso para selecionar idiomas de tradução -->
+    <select id="language_selector">
+      <option value="en">Inglês</option>
+      <option value="fr">Francês</option>
+      <option value="es">Espanhol</option>
+      <option value="de">Alemão</option>
+    </select>
   </header>
 
   <nav>
@@ -110,12 +120,22 @@
 
     // Função de inicialização do Google Translate
     function googleTranslateElementInit() {
-      new google.translate.TranslateElement({pageLanguage: 'pt', includedLanguages: 'en,fr,es,de,ru,it,no,nl', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+      new google.translate.TranslateElement({pageLanguage: 'pt', includedLanguages: 'en,fr,es,de', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
     }
 
     // Carrega o botão de tradução ao carregar a página
     window.onload = function() {
       loadTranslateButton();
+    };
+
+    // Atualiza a tradução quando o idioma selecionado é alterado
+    document.getElementById('language_selector').onchange = function() {
+      var language = this.value;
+      var translate_element = document.querySelector('.goog-te-combo');
+      if (translate_element) {
+        translate_element.value = language;
+        translate_element.dispatchEvent(new Event('change'));
+      }
     };
   </script>
 </body>
