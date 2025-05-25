@@ -72,19 +72,40 @@
       background-color: #006666;
     }
 
+    .success-message {
+      background-color: #d4edda;
+      color: #155724;
+      border: 2px solid #c3e6cb;
+      padding: 20px;
+      margin-top: 30px;
+      text-align: center;
+      font-weight: bold;
+      border-radius: 10px;
+      font-size: 18px;
+    }
+
+    canvas#confetti {
+      position: fixed;
+      pointer-events: none;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+    }
+
     footer {
       background-color: #004d4d;
       color: white;
       text-align: center;
       padding: 15px;
-      position: relative;
-      bottom: 0;
-      width: 100%;
-      margin-top: 40px;
+      margin-top: 50px;
     }
   </style>
 </head>
 <body>
+  <canvas id="confetti"></canvas>
+
   <header>
     <h1>Contato - Reporte um Problema</h1>
   </header>
@@ -94,18 +115,74 @@
       <h2>Fale Conosco</h2>
       <p>Preencha o formulário abaixo para nos avisar sobre problemas no servidor Minecraft.</p>
 
-      <form action="https://formspree.io/f/yourFormID" method="POST">
+      <form id="contact-form">
         <input type="text" name="name" placeholder="Seu nome" required>
         <input type="email" name="email" placeholder="Seu email" required>
         <input type="text" name="subject" placeholder="Assunto" required>
         <textarea name="message" rows="6" placeholder="Descreva o problema..." required></textarea>
         <button type="submit">Enviar</button>
       </form>
+
+      <div id="success" class="success-message" style="display: none;">
+        🎉 Você contatou o dono do servidor! Parabéns!
+      </div>
     </div>
   </main>
 
   <footer>
     <p>© 2023 FarLands2011. Todos os direitos reservados.</p>
   </footer>
+
+  <!-- JavaScript for AJAX + Confetti -->
+  <script>
+    const form = document.getElementById('contact-form');
+    const successMessage = document.getElementById('success');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const data = new FormData(form);
+      fetch('https://formspree.io/f/mldbynrz', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          form.reset();
+          successMessage.style.display = 'block';
+          runConfetti();
+        } else {
+          alert('Erro ao enviar. Tente novamente.');
+        }
+      });
+    });
+
+    // Confetti function
+    function runConfetti() {
+      const duration = 3 * 1000;
+      const animationEnd = Date.now() + duration;
+      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
+
+      const randomInRange = (min, max) => Math.random() * (max - min) + min;
+
+      const interval = setInterval(function () {
+        const timeLeft = animationEnd - Date.now();
+
+        if (timeLeft <= 0) {
+          return clearInterval(interval);
+        }
+
+        confetti({
+          particleCount: 50,
+          origin: {
+            x: randomInRange(0.1, 0.9),
+            y: randomInRange(0.1, 0.5)
+          },
+          ...defaults
+        });
+      }, 250);
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </body>
 </html>
