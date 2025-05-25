@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Bernas Analytics</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
   <style>
     body {
       background-color: #121212;
@@ -37,6 +37,23 @@
       margin-top: 20px;
       text-align: center;
     }
+
+    .back-button {
+      display: block;
+      margin: 30px auto 0;
+      background-color: #00aaaa;
+      color: white;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 16px;
+      text-align: center;
+      width: fit-content;
+    }
+
+    .back-button:hover {
+      background-color: #008888;
+    }
   </style>
 </head>
 <body>
@@ -57,9 +74,12 @@
     <p id="weatherInfo">Loading weather data...</p>
   </div>
 
+  <a href="index.html" class="back-button">⬅ Back to Home</a>
+
+  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    // Chart
+    // Fake analytics chart
     const ctx = document.getElementById('visitChart').getContext('2d');
     new Chart(ctx, {
       type: 'bar',
@@ -74,37 +94,24 @@
       options: {
         responsive: true,
         scales: {
-          y: { beginAtZero: true }
+          y: {
+            beginAtZero: true
+          }
         }
       }
     });
+  </script>
 
-    // Weather
-    const weatherInfo = document.getElementById('weatherInfo');
-    const API_KEY = 'YOUR_OPENWEATHERMAP_API_KEY';
-
-    function getWeather(lat, lon) {
-      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`)
-        .then(response => response.json())
-        .then(data => {
-          const city = data.name;
-          const temp = data.main.temp;
-          const desc = data.weather[0].description;
-          weatherInfo.textContent = `${city}: ${temp}°C, ${desc}`;
-        })
-        .catch(() => {
-          weatherInfo.textContent = 'Could not load weather data.';
-        });
-    }
-
-    navigator.geolocation.getCurrentPosition(
-      position => {
-        getWeather(position.coords.latitude, position.coords.longitude);
-      },
-      error => {
-        weatherInfo.textContent = 'Location access denied.';
-      }
-    );
+  <!-- Free weather from wttr.in -->
+  <script>
+    fetch('https://wttr.in/?format=%l:+%c+%t')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('weatherInfo').textContent = data;
+      })
+      .catch(() => {
+        document.getElementById('weatherInfo').textContent = 'Could not load weather data.';
+      });
   </script>
 </body>
 </html>
