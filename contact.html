@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato - FarLands</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Contato - Reportar Problemas</h1>
+  </header>
+
+  <main>
+    <section>
+      <h2>Envie-nos um Relato</h2>
+      <p>Use o formulário abaixo para relatar qualquer problema com o servidor Minecraft.</p>
+
+      <form action="https://formspree.io/f/yourFormID" method="POST">
+        <label for="name">Nome:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Seu Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="subject">Assunto:</label><br>
+        <input type="text" id="subject" name="subject" required><br><br>
+
+        <label for="message">Mensagem:</label><br>
+        <textarea id="message" name="message" rows="6" required></textarea><br><br>
+
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2023 FarLands2011. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
