@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FarLands</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="Images/OMG.ico" type="image/x-icon">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="Images/OMG.ico" type="image/x-icon" />
 
   <!-- Google Translate -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -78,17 +78,17 @@
       <h2>Como Jogar</h2>
       <ol>
         <li>
-          <strong>Passo 1:</strong> Baixe a versão Minecraft Beta 1.7.3<br>
-          <a href="https://www.youtube.com/watch?v=rg-B_m8wWVA">Veja o tutorial</a><br>
-          <img src="Images/Captura de Ecrã (2).jfif" alt="Passo 1">
+          <strong>Passo 1:</strong> Baixe a versão Minecraft Beta 1.7.3<br />
+          <a href="https://www.youtube.com/watch?v=rg-B_m8wWVA">Veja o tutorial</a><br />
+          <img src="Images/Captura de Ecrã (2).jfif" alt="Passo 1" />
         </li>
         <li>
-          <strong>Passo 2:</strong> Abra o Minecraft e adicione o IP do servidor<br>
-          <img src="Images/Captura de Ecrã (5).jfif" alt="Passo 2">
+          <strong>Passo 2:</strong> Abra o Minecraft e adicione o IP do servidor<br />
+          <img src="Images/Captura de Ecrã (5).jfif" alt="Passo 2" />
         </li>
         <li>
-          <strong>Passo 3:</strong> Clique em "Join Server" e jogue!<br>
-          <img src="Images/Captura de Ecrã (6).jfif" alt="Passo 3">
+          <strong>Passo 3:</strong> Clique em "Join Server" e jogue!<br />
+          <img src="Images/Captura de Ecrã (6).jfif" alt="Passo 3" />
         </li>
       </ol>
       <p>Horário do servidor:</p>
@@ -103,5 +103,21 @@
   <footer>
     <p>© 2023 FarLands2011. Todos os direitos reservados.</p>
   </footer>
+
+  <!-- Easter Egg Script -->
+  <script>
+    let sequence = '';
+    const secretCode = 'BERNAS';
+
+    document.addEventListener('keydown', function (e) {
+      sequence += e.key.toUpperCase();
+      if (sequence.length > secretCode.length) {
+        sequence = sequence.slice(-secretCode.length);
+      }
+      if (sequence === secretCode) {
+        window.location.href = 'analytics.html';
+      }
+    });
+  </script>
 </body>
 </html>
