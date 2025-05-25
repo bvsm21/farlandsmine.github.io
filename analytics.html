@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Bernas Analytics</title>
   <link rel="stylesheet" href="style.css" />
+  <script defer data-domain="bvsm21.github.io/farlandsmine.github.io/index.html" src="https://plausible.io/js/script.js"></script>
   <style>
     body {
       background-color: #121212;
@@ -65,8 +66,11 @@
   </div>
 
   <div class="section">
-    <h2>🗺️ Visitors by Country (Sample)</h2>
-    <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1aOyz7bYYd5d9Ud0TbEhK5uZKZ1eh-wo&ehbc=2E312F" height="400"></iframe>
+    <h2>🗺️ World Map (Sample)</h2>
+    <iframe src="https://www.openstreetmap.org/export/embed.html" height="400"></iframe>
+    <p style="text-align:center; font-size:14px; color:#aaa;">
+      For real maps with locations, connect Plausible with IP geolocation (Pro plan).
+    </p>
   </div>
 
   <div class="section weather">
@@ -79,7 +83,6 @@
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    // Fake analytics chart
     const ctx = document.getElementById('visitChart').getContext('2d');
     new Chart(ctx, {
       type: 'bar',
@@ -94,15 +97,13 @@
       options: {
         responsive: true,
         scales: {
-          y: {
-            beginAtZero: true
-          }
+          y: { beginAtZero: true }
         }
       }
     });
   </script>
 
-  <!-- Free weather from wttr.in -->
+  <!-- Weather from wttr.in -->
   <script>
     fetch('https://wttr.in/?format=%l:+%c+%t')
       .then(response => response.text())
