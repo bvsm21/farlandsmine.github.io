@@ -57,7 +57,8 @@
       resize: vertical;
     }
 
-    button {
+    button,
+    .back-button {
       background-color: #008080;
       color: white;
       padding: 14px;
@@ -66,9 +67,13 @@
       font-size: 16px;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
     }
 
-    button:hover {
+    button:hover,
+    .back-button:hover {
       background-color: #006666;
     }
 
@@ -82,6 +87,11 @@
       font-weight: bold;
       border-radius: 10px;
       font-size: 18px;
+    }
+
+    .back-container {
+      text-align: center;
+      margin-top: 30px;
     }
 
     canvas#confetti {
@@ -125,6 +135,10 @@
 
       <div id="success" class="success-message" style="display: none;">
         🎉 Você contatou o dono do servidor! Parabéns!
+      </div>
+
+      <div class="back-container">
+        <a href="index.html" class="back-button">⬅ Voltar à Página Inicial</a>
       </div>
     </div>
   </main>
