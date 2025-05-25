@@ -8,27 +8,19 @@
 </head>
 <body>
   <header>
-    <h1>Contato - Reportar Problemas</h1>
+    <h1>Contato - Reporte um Problema</h1>
   </header>
 
   <main>
-    <section>
-      <h2>Envie-nos um Relato</h2>
-      <p>Use o formulário abaixo para relatar qualquer problema com o servidor Minecraft.</p>
+    <section class="contact-form">
+      <h2>Fale Conosco</h2>
+      <p>Está com problemas no servidor? Envie-nos uma mensagem abaixo!</p>
 
       <form action="https://formspree.io/f/yourFormID" method="POST">
-        <label for="name">Nome:</label><br>
-        <input type="text" id="name" name="name" required><br><br>
-
-        <label for="email">Seu Email:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
-
-        <label for="subject">Assunto:</label><br>
-        <input type="text" id="subject" name="subject" required><br><br>
-
-        <label for="message">Mensagem:</label><br>
-        <textarea id="message" name="message" rows="6" required></textarea><br><br>
-
+        <input type="text" name="name" placeholder="Seu nome" required>
+        <input type="email" name="email" placeholder="Seu email" required>
+        <input type="text" name="subject" placeholder="Assunto" required>
+        <textarea name="message" rows="6" placeholder="Descreva o problema..." required></textarea>
         <button type="submit">Enviar</button>
       </form>
     </section>
